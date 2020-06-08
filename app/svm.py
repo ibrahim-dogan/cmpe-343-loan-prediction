@@ -35,18 +35,6 @@ X_test = sc.transform(X_test)
 classifier = SVC(random_state=0)
 classifier.fit(X_train, y_train)
 
-# Fitting Naive Bayes to the Training set
-classifier = GaussianNB()
-classifier.fit(X_train, y_train)
-
-# Fitting Decision Tree Classification to the Training set
-classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
-classifier.fit(X_train, y_train)
-
-# Fitting Random Forest Classification to the Training set
-classifier = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=0)
-classifier.fit(X_train, y_train)
-
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
