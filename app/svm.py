@@ -35,59 +35,6 @@ X_test = sc.transform(X_test)
 classifier = SVC(random_state=0)
 classifier.fit(X_train, y_train)
 
-# Predicting the Test set results
-y_pred = classifier.predict(X_test)
-
-# Making the Confusion Matrix
-cm = confusion_matrix(y_test, y_pred)
-
-fig, ax = plt.subplots(figsize=(2.5, 2.5))
-ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
-for i in range(cm.shape[0]):
-    for j in range(cm.shape[1]):
-        ax.text(x=j, y=i, s=cm[i, j], va='center', ha='center')
-
-plt.xlabel('Predicted label')
-plt.ylabel('True label')
-plt.tight_layout()
-plt.show()
-
-# plot diagram
-plt.scatter(dataset['ApplicantIncome'], dataset['LoanAmount'], color='red')
-plt.title('Applicant Income vs Loan Amount ')
-plt.xlabel('applicant income')
-plt.ylabel('loan amount')
-plt.show()
-
-# plot diagram
-plt.scatter(y, dataset['LoanAmount'], color='green')
-plt.title('Loan Status vs Loan Amount ')
-plt.xlabel('Loan Status')
-plt.ylabel('Loan Amount')
-plt.show()
-
-# plot diagram
-plt.plot(y, color='red', label='predictions')
-plt.plot(dataset['Dependents'], color='blue', label='dependents')
-plt.title('Loan Status vs Dependents')
-plt.xlabel('Loan Status')
-plt.ylabel('Dependents')
-plt.legend(loc='lower right')
-plt.show()
-
-# plot test set
-plt.plot(y_pred, color='red', label='predictions')
-plt.plot(y_test, color='blue', label='real test values')
-plt.title('Loan Status (Test set)')
-plt.legend(loc='lower right')
-plt.show()
-
-# Evaluation metrics
-print(precision_score(y_true=y_test, y_pred=y_pred))
-print(recall_score(y_true=y_test, y_pred=y_pred))
-print(f1_score(y_true=y_test, y_pred=y_pred))
-print(accuracy_score(y_true=y_test, y_pred=y_pred))
-
 
 def predict_row(row):
     dataset_x = pd.read_csv('app/train_loan.csv', sep=';')
